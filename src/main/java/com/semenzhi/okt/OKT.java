@@ -59,7 +59,7 @@ public class OKT
             .alwaysEdible().nutrition(20).saturationModifier(20f).build()));
 
     // Creates a creative tab with the id "examplemod:example_tab" for the example item, that is placed after the combat tab
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("OKT", () -> CreativeModeTab.builder()
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("okt", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.onurkneeentity")) //The language key for the title of your CreativeModeTab
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> KNEES_TREAT.get().getDefaultInstance())
