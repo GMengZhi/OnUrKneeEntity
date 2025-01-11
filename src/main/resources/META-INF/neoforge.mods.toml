@@ -1,11 +1,11 @@
 modLoader="javafml"
-loaderVersion="[45,)"
+loaderVersion="[2,)"
 license="All rights reserved"
 
 [[mods]]
     modId="onurkneeentity"
-    version="${file.jarVersion}"
-    isplayName="On Your Knee Entity"
+    version="${mod_version}"
+    displayName="On Your Knee Entity"
     authors="Semenzhi"
     description='''${mod_description}'''
 
@@ -22,6 +22,6 @@ license="All rights reserved"
 [[dependencies.onurkneeentity]]
     modId="minecraft"
     type="required"
-    versionRange="[1.21.4,)"
+    versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
