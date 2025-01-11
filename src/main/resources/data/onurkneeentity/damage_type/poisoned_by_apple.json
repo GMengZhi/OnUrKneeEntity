@@ -1,0 +1,7 @@
+{
+  "message_id": "okt.poisoned_by_apple",
+  "scaling": "never",
+  "exhaustion": 0.1,
+  "effects": "freezing",
+  "death_message_type": "default"
+}

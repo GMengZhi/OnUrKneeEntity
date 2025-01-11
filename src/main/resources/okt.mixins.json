@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.semenzhi.okt.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "TestMixin"
+  ],
+  "client": [
+
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
