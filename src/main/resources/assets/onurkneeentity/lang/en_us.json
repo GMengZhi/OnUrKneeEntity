@@ -1,3 +1,4 @@
 {
-  "death.attack.okt.poisoned_by_apple": "%1$s was poisoned by apple"
+  "death.attack.okt.poisoned_by_apple": "%1$s was poisoned by apple",
+  "commands.data.player.modify.error": "An error occurred while modifying player data"
 }
