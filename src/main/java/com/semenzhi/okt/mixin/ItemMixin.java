@@ -11,7 +11,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -27,15 +26,10 @@ public class ItemMixin {
         DamageSource damageSource = new DamageSource(
                 level.registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE).getOrThrow(APPLE_DAMAGE), null, player, null
         );
-        onUrKneeEntity$test();
         if(stack.getItem() == Items.APPLE && remainingUseDuration < 20 &&!level.isClientSide()) {
             player.hurtServer((ServerLevel) level,damageSource,Float.MAX_VALUE);
             player.displayClientMessage(Component.literal("You have poisoned by An Apple. You asshole"),false);
         }
     }
 
-    @Unique
-    public void onUrKneeEntity$test(){
-        System.out.println("test");
-    }
 }
