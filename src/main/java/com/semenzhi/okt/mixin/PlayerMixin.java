@@ -2,7 +2,6 @@ package com.semenzhi.okt.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import com.llamalad7.mixinextras.sugar.ref.LocalFloatRef;
 import com.semenzhi.okt.Connector;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
