@@ -48,19 +48,23 @@ public class EntityMixin implements Connector {
 
 
     @Unique
-    public void knockbackR(double strength, double x, double z) {
+    public void knockbackR(double strength, double x, double y, double z) {
         if (!(strength <= 0.0)) {
             Vec3 vec3 = this.getDeltaMovement();
 
             while (x * x + z * z < 1.0E-5F) {
                 x = (Math.random() - Math.random()) * 0.01;
                 z = (Math.random() - Math.random()) * 0.01;
+                y = (Math.random() - Math.random()) * 0.01;
             }
 
-            Vec3 vec31 = new Vec3(x, 0.0, z).normalize().scale(strength);
-            this.setDeltaMovement(vec3.x / 2.0 - vec31.x, vec3.y, vec3.z / 2.0 - vec31.z);
+            Vec3 vec31 = new Vec3(x, y, z).normalize().scale(strength);
+            this.setDeltaMovement(vec3.x / 2.0 - vec31.x, vec3.y - vec31.y, vec3.z / 2.0 - vec31.z);
         }
     }
+
+
+
 
 }
 

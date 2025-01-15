@@ -50,10 +50,11 @@ public abstract class PlayerMixin extends LivingEntity {
         ((Connector) (target)).knockbackR(
                 knockBack == 0F ? knockbackMultiplier * 0.5F : (knockBack * knockbackMultiplier * 0.5F),
                 Mth.sin(this.getYRot() * (float) (Math.PI / 180.0)),
+                Mth.sin(this.getXRot() * (float) (Math.PI / 180.0)),
                 -Mth.cos(this.getYRot() * (float) (Math.PI / 180.0))
         );
 
-        displayClientMessage(Component.literal("kb" + (knockBack == 0F ? knockbackMultiplier * 0.5F : (knockBack * knockbackMultiplier * 0.5F))), true);
+        displayClientMessage(Component.literal("x:" + getXRot() + "  Y:" + getYRot() + "  Z:" + -Mth.cos(this.getYRot() * (float) (Math.PI / 180.0))), true);
 
     }
 
