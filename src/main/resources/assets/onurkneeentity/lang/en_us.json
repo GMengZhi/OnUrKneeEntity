@@ -1,4 +1,6 @@
 {
   "death.attack.okt.poisoned_by_apple": "%1$s was poisoned by apple",
-  "commands.data.player.modify.error": "An error occurred while modifying player data"
+  "commands.data.player.modify.error": "An error occurred while modifying player data",
+  "info.be_poisoned_by_apple": "You have poisoned by An Apple. You asshole",
+  "itemGroup.onurkneeentity": "On Your Knee Entity"
 }

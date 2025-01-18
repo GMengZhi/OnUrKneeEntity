@@ -1,4 +1,6 @@
 {
   "death.attack.okt.poisoned_by_apple": "%1$s 被苹果毒死了",
-  "commands.data.player.modify.error": "修改玩家数据时出错"
+  "commands.data.player.modify.error": "修改玩家数据时出错",
+  "info.be_poisoned_by_apple": "你被一个苹果毒死了。你这个笨蛋",
+  "itemGroup.onurkneeentity": "统治实体"
 }

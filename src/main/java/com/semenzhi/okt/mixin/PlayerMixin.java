@@ -20,12 +20,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Player.class)
 public abstract class PlayerMixin extends LivingEntity {
 
+    @Shadow public abstract void displayClientMessage(Component chatComponent, boolean actionBar);
+
     protected PlayerMixin(EntityType<? extends LivingEntity> p_20966_, Level p_20967_) {
         super(p_20966_, p_20967_);
     }
-
-    @Shadow
-    public abstract void displayClientMessage(Component chatComponent, boolean actionBar);
 
     @ModifyVariable(method = "attack", at = @At("STORE"), ordinal = 5)
     public boolean flag4m(boolean flag) {
@@ -43,7 +42,16 @@ public abstract class PlayerMixin extends LivingEntity {
                                  @Local(index = 18) float knockBack,
                                  @Local(index = 9) boolean isCritical,
                                  @Local(index = 7) boolean isStrong,
-                                 @Local(index = 12) boolean isSweep) {
+                                 @Local(index = 12) boolean isSweep,
+                                 @Local(index = 11) float calculatedDamage) {
+
+
+
+        float calculatedFallingDistance = target.fallDistance;
+
+        calculatedFallingDistance = (float) Math.abs(Math.sqrt(calculatedFallingDistance * calculatedFallingDistance + knockBack * knockBack / 4));
+
+        target.fallDistance = calculatedFallingDistance;
 
         float knockbackMultiplier = isCritical ? 4.0F : (isStrong ? 2.0F : 0.5F);
 
@@ -54,9 +62,8 @@ public abstract class PlayerMixin extends LivingEntity {
                 -Mth.cos(this.getYRot() * (float) (Math.PI / 180.0))
         );
 
-        displayClientMessage(Component.literal("x:" + getXRot() + "  Y:" + getYRot() + "  Z:" + -Mth.cos(this.getYRot() * (float) (Math.PI / 180.0))), true);
+        displayClientMessage(Component.literal(String.valueOf(calculatedFallingDistance)),true);
 
     }
-
 
 }

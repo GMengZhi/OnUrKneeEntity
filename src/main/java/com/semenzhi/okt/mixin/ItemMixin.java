@@ -28,7 +28,7 @@ public class ItemMixin {
         );
         if(stack.getItem() == Items.APPLE && remainingUseDuration < 20 &&!level.isClientSide()) {
             player.hurtServer((ServerLevel) level,damageSource,Float.MAX_VALUE);
-            player.displayClientMessage(Component.literal("You have poisoned by An Apple. You asshole"),false);
+            player.displayClientMessage(Component.translatable("info.be_poisoned_by_apple"),false);
         }
     }
 
