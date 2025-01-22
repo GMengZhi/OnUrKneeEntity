@@ -26,7 +26,7 @@ public abstract class PlayerMixin extends LivingEntity {
         super(p_20966_, p_20967_);
     }
 
-    @ModifyVariable(method = "attack", at = @At("STORE"), ordinal = 5)
+    @ModifyVariable(method = "attack", at = @At("STORE"), index = 17)
     public boolean flag4m(boolean flag) {
         return true;
     }

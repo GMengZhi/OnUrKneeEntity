@@ -7,7 +7,8 @@
     "EntityDataAccessorMixin",
     "EntityMixin",
     "FallingBlockEntityMixin",
-    "PlayerMixin"
+    "PlayerMixin",
+    "EntityAccessors"
   ],
   "client": [
 
