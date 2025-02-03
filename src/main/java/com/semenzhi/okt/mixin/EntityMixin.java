@@ -8,10 +8,11 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Entity.class)
-public class EntityMixin implements Connector {
+public class EntityMixin {
 
     @Shadow
     private Vec3 deltaMovement = Vec3.ZERO;
@@ -46,6 +47,13 @@ public class EntityMixin implements Connector {
         cir.setReturnValue(false);
     }
 
+    @Inject(method = "discard", at = @At("HEAD"))
+    private void onDiscard(CallbackInfo ci) {
+        // 检查当前实体是否是 FallingBlockEntity
+        if ((Object) this instanceof Connector accessor) {
+            accessor.onUrKneeEntity$clearHarmedEntities(); // 清空集合
+        }
+    }
 
     @Unique
     public void knockbackR(double strength, double x, double y, double z) {
@@ -62,9 +70,6 @@ public class EntityMixin implements Connector {
             this.setDeltaMovement(vec3.x / 2.0 - vec31.x, vec3.y - vec31.y, vec3.z / 2.0 - vec31.z);
         }
     }
-
-
-
 
 }
 
