@@ -20,7 +20,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Player.class)
 public abstract class PlayerMixin extends LivingEntity {
 
-    @Shadow public abstract void displayClientMessage(Component chatComponent, boolean actionBar);
+    @Shadow
+    public abstract void displayClientMessage(Component chatComponent, boolean actionBar);
 
     protected PlayerMixin(EntityType<? extends LivingEntity> p_20966_, Level p_20967_) {
         super(p_20966_, p_20967_);
@@ -46,7 +47,6 @@ public abstract class PlayerMixin extends LivingEntity {
                                  @Local(index = 11) float calculatedDamage) {
 
 
-
         float calculatedFallingDistance = target.fallDistance;
 
         calculatedFallingDistance = (float) Math.abs(Math.sqrt(calculatedFallingDistance * calculatedFallingDistance + knockBack * knockBack / 4));
@@ -62,7 +62,7 @@ public abstract class PlayerMixin extends LivingEntity {
                 -Mth.cos(this.getYRot() * (float) (Math.PI / 180.0))
         );
 
-        displayClientMessage(Component.literal(String.valueOf(calculatedFallingDistance)),true);
+        displayClientMessage(Component.literal(String.valueOf(calculatedFallingDistance)), true);
 
     }
 

@@ -33,13 +33,20 @@ abstract class FallingBlockEntityMixin extends Entity implements Connector {
         super(entityType, level);
     }
 
-    @Shadow private int fallDamageMax;
-    @Shadow private BlockState blockState;
-    @Shadow private float fallDamagePerDistance;
-    @Unique Predicate<Entity> onUrKneeEntity$predicate = EntitySelector.NO_CREATIVE_OR_SPECTATOR;
-    @Unique DamageSource onUrKneeEntity$damagesource;
-    @Unique private Level onUrKneeEntity$level;
-    @Unique private final Set<Entity> onUrKneeEntity$harmedEntities = Collections.newSetFromMap(new WeakHashMap<>());
+    @Shadow
+    private int fallDamageMax;
+    @Shadow
+    private BlockState blockState;
+    @Shadow
+    private float fallDamagePerDistance;
+    @Unique
+    Predicate<Entity> onUrKneeEntity$predicate = EntitySelector.NO_CREATIVE_OR_SPECTATOR;
+    @Unique
+    DamageSource onUrKneeEntity$damagesource;
+    @Unique
+    private Level onUrKneeEntity$level;
+    @Unique
+    private final Set<Entity> onUrKneeEntity$harmedEntities = Collections.newSetFromMap(new WeakHashMap<>());
 
     @Override
     public void onUrKneeEntity$clearHarmedEntities() {
@@ -52,7 +59,7 @@ abstract class FallingBlockEntityMixin extends Entity implements Connector {
         cir.setReturnValue(true);
     }
 
-    @Inject(method = "<init>(Lnet/minecraft/world/level/Level;DDDLnet/minecraft/world/level/block/state/BlockState;)V" , at = @At("TAIL"))
+    @Inject(method = "<init>(Lnet/minecraft/world/level/Level;DDDLnet/minecraft/world/level/block/state/BlockState;)V", at = @At("TAIL"))
     public void init(Level level, double x, double y, double z, BlockState state, CallbackInfo ci) {
         fallDamageMax = Integer.MAX_VALUE;
 
@@ -83,7 +90,7 @@ abstract class FallingBlockEntityMixin extends Entity implements Connector {
         if (onUrKneeEntity$damagesource == null) onUrKneeEntity$damagesource = this.damageSources().fallingBlock(this);
 
         onUrKneeEntity$level = ((EntityAccessors) this).getLevel();
-        if(!onUrKneeEntity$level.isClientSide) {
+        if (!onUrKneeEntity$level.isClientSide) {
             float f = (float) Math.min(Mth.floor(fallDistance * this.fallDamagePerDistance), this.fallDamageMax);
 
             onUrKneeEntity$level.getEntities(this, this.getBoundingBox(), onUrKneeEntity$predicate).forEach(entity -> {

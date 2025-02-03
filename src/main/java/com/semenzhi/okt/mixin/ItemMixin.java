@@ -21,14 +21,14 @@ import static com.semenzhi.okt.utils.DMGSources.APPLE_DAMAGE;
 public class ItemMixin {
 
     @Inject(method = "onUseTick", at = @At("HEAD"))
-    public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int remainingUseDuration, CallbackInfo ci){
+    public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int remainingUseDuration, CallbackInfo ci) {
         Player player = (Player) livingEntity;
         DamageSource damageSource = new DamageSource(
                 level.registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE).getOrThrow(APPLE_DAMAGE), null, player, null
         );
-        if(stack.getItem() == Items.APPLE && remainingUseDuration < 20 &&!level.isClientSide()) {
-            player.hurtServer((ServerLevel) level,damageSource,Float.MAX_VALUE);
-            player.displayClientMessage(Component.translatable("info.be_poisoned_by_apple"),false);
+        if (stack.getItem() == Items.APPLE && remainingUseDuration < 20 && !level.isClientSide()) {
+            player.hurtServer((ServerLevel) level, damageSource, Float.MAX_VALUE);
+            player.displayClientMessage(Component.translatable("info.be_poisoned_by_apple"), false);
         }
     }
 
